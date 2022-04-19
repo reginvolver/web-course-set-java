@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xwz.fullstack.mapper.GoodsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.xwz.fullstack.entity.Goods">
+        <id column="good_id" property="goodId" />
+        <result column="price" property="price" />
+        <result column="good_name" property="goodName" />
+        <result column="good_category" property="goodCategory" />
+        <result column="good_status" property="goodStatus" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+</mapper>
