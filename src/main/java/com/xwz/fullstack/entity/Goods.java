@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -32,14 +33,17 @@ public class Goods implements Serializable {
     private Integer goodId;
 
     @ApiModelProperty("商品金额")
+    @NotBlank
     @TableField("price")
     private BigDecimal price;
 
     @ApiModelProperty("商品名称")
+    @NotBlank
     @TableField("good_name")
     private String goodName;
 
     @ApiModelProperty("商品类别 对应 goods_category category_id")
+    @NotBlank
     @TableField("good_category")
     private Integer goodCategory;
 

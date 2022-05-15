@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 /**
@@ -30,8 +31,9 @@ public class GoodsCategory implements Serializable {
     private Integer categoryId;
 
     @ApiModelProperty("类别名称")
-    @TableField("name_category")
-    private String nameCategory;
+    @NotBlank
+    @TableField("category_name")
+    private String categoryName;
 
 
 }

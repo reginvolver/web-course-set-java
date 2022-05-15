@@ -5,7 +5,7 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.xwz.fullstack.entity.GoodsCategory">
         <id column="category_id" property="categoryId" />
-        <result column="name_category" property="nameCategory" />
+        <result column="category_name" property="categoryName" />
     </resultMap>
 
 </mapper>

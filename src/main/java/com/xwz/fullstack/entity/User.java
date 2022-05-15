@@ -7,7 +7,9 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -26,19 +28,24 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+
     @ApiModelProperty("用户id")
     @TableId(value = "user_id", type = IdType.AUTO)
     private Integer userId;
 
     @ApiModelProperty("用户昵称")
-    @TableField("name")
-    private String name;
+    @Length(min = 4,message = "昵称长度最小四位")
+    @TableField("username")
+    private String username;
 
+    @Length(min = 6,message = "密码长度最小四位")
     @ApiModelProperty("用户密码")
     @TableField("password")
+
     private String password;
 
     @ApiModelProperty("用户手机号")
+    @NotBlank
     @TableField("phone_number")
     private String phoneNumber;
 
