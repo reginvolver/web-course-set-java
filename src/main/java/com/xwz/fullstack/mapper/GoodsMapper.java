@@ -1,8 +1,13 @@
 package com.xwz.fullstack.mapper;
 
-import com.xwz.fullstack.entity.Goods;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.xwz.fullstack.entity.Goods;
+import com.xwz.fullstack.entity.dto.GoodsCategoryVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,5 +19,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface GoodsMapper extends BaseMapper<Goods> {
-
+    @Select("SELECT good_id,price,good_name,goods_category.category_name,good_status,create_time from goods , goods_category " +
+            "where goods_category.category_id = goods.good_category ")
+    List<GoodsCategoryVO> getGoodCategory(Page<GoodsCategoryVO> page);
 }

@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * <p>
  * 商品类别表 前端控制器
@@ -53,7 +55,7 @@ public class GoodsCategoryController {
     }
 
 
-    @ApiOperation("分页查找商品 根据分类名称查询")
+    @ApiOperation("查找商品分类 根据分类名称查询")
     @GetMapping("/find")
     public Result<?> findPageGood(@RequestParam(defaultValue = "1") Integer pageNum,
                                   @RequestParam(defaultValue = "10") Integer pageSize,
@@ -67,5 +69,12 @@ public class GoodsCategoryController {
         Page<GoodsCategory> userPage = goodsCategoryService.page(new Page<>(pageNum, pageSize), wrapper);
         return Result.success(userPage);
     }
+
+    @ApiOperation("查找所有商品分类")
+    @GetMapping("/findAll")
+    public Result<List<GoodsCategory>> findAll(){
+        return Result.success(goodsCategoryService.list());
+    }
+
 
 }

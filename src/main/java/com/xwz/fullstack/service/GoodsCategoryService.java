@@ -1,7 +1,7 @@
 package com.xwz.fullstack.service;
 
-import com.xwz.fullstack.entity.GoodsCategory;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.xwz.fullstack.entity.GoodsCategory;
 
 /**
  * <p>

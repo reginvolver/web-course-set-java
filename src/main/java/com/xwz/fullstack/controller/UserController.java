@@ -61,7 +61,6 @@ public class UserController {
         List<User> list = userService.list(new LambdaQueryWrapper<User>().eq(User::getUsername,registerDTO.getUsername()));
         if(list.isEmpty()){
             User addUser = new User();
-            addUser.setPhoneNumber(registerDTO.getPhoneNumber());
             addUser.setUsername(registerDTO.getUsername());
             //10次加盐加密
             addUser.setPassword(BCrypt.hashpw(registerDTO.getPassword()));

@@ -1,16 +1,17 @@
 package com.xwz.fullstack.controller;
 
 import cn.dev33.satoken.annotation.SaCheckLogin;
-import cn.hutool.core.util.StrUtil;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xwz.fullstack.common.Result;
 import com.xwz.fullstack.entity.Goods;
+import com.xwz.fullstack.entity.dto.GoodsCategoryVO;
 import com.xwz.fullstack.service.GoodsService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -59,15 +60,17 @@ public class GoodsController {
                                   @RequestParam(defaultValue = "") String search,
                                   @RequestParam(defaultValue="") String category
     ){
-        LambdaQueryWrapper<Goods> wrapper = new LambdaQueryWrapper<>();
-        if(StrUtil.isNotBlank(category)){
-            wrapper.eq(Goods::getGoodCategory,category);
-        }
-        if(StrUtil.isNotBlank(search)){
-            wrapper.like(Goods::getGoodName,search);
-        }
-        Page<Goods> userPage = goodsService.page(new Page<>(pageNum, pageSize), wrapper);
-        return Result.success(userPage);
+        //LambdaQueryWrapper<Goods> wrapper = new LambdaQueryWrapper<>();
+        //if(StrUtil.isNotBlank(category)){
+        //    wrapper.eq(Goods::getGoodCategory,category);
+        //}
+        //if(StrUtil.isNotBlank(search)){
+        //    wrapper.like(Goods::getGoodName,search);
+        //}
+        List<GoodsCategoryVO> goodCategory = goodsService.getGoodCategory(new Page<GoodsCategoryVO>(pageNum, pageSize));
+
+        //Page<Goods> userPage = goodsService.page(new Page<>(pageNum, pageSize), wrapper);
+        return Result.success(goodCategory);
     }
 
 

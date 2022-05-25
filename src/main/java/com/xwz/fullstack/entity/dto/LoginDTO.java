@@ -20,7 +20,7 @@ public class LoginDTO implements Serializable {
     @ApiModelProperty("用户昵称")
     @Length(min = 4,message = "昵称长度最小四位")
     private String username;
-    @Length(min = 6,message = "密码长度最小四位")
+    @Length(min = 6,message = "密码长度最小六位")
     @ApiModelProperty("用户密码")
     private String password;
 }
